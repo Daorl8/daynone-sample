@@ -14,7 +14,7 @@
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' fill='%230d0d0d'/%3E%3Ctext x='32' y='42' font-family='Georgia,serif' font-size='30' fill='%23f1f1f1' text-anchor='middle' letter-spacing='1'%3Edn%3C/text%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,300;0,400;0,500;1,300;1,400&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Marcellus&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
 <link rel="preload" as="image" href="dn-hero.jpg" fetchpriority="high">
 <style>
@@ -22,7 +22,7 @@
   --bg:#0d0d0d; --bg2:#131313; --panel:#171717;
   --ink:#f1f1ef; --ink-2:#cfcfcc; --mut:#8f8f8b; --faint:#5c5c58;
   --line:rgba(255,255,255,.12); --line-2:rgba(255,255,255,.07);
-  --serif:'Jost','Pretendard','Apple SD Gothic Neo','Malgun Gothic',sans-serif;
+  --serif:'Marcellus','Pretendard','Apple SD Gothic Neo','Malgun Gothic',sans-serif;
   --sans:'Pretendard','Apple SD Gothic Neo','Malgun Gothic',system-ui,sans-serif;
   --bar:60px;
   --pad:22px; --maxw:1180px;
@@ -42,7 +42,7 @@ h1,h2,h3,p{margin:0}
 .wrap{width:100%;max-width:var(--maxw);margin:0 auto;padding:0 var(--pad)}
 .serif{font-family:var(--serif);font-weight:300;font-optical-sizing:auto}
 .eyebrow{font-size:11px;letter-spacing:.34em;text-transform:uppercase;color:var(--mut);font-weight:500}
-.en{font-family:var(--serif);font-style:italic;font-weight:300}
+.en{font-family:var(--serif);font-style:normal;font-weight:400;letter-spacing:.03em}
 
 /* ---------- header ---------- */
 header{position:fixed;inset:0 0 auto 0;z-index:80;height:var(--bar);
@@ -98,7 +98,7 @@ section{position:relative}
 .slabel span{font-size:11px;letter-spacing:.3em;text-transform:uppercase;color:var(--mut);font-weight:500}
 .display{font-family:var(--serif);font-weight:500;font-optical-sizing:auto;
   font-size:clamp(1.9rem,5.2vw,3.4rem);line-height:1.16;letter-spacing:-.01em}
-.display em,.intro .big em,.dn-copy h3 em{font-style:normal}
+.display em,.intro .big em{font-style:normal}
 .body-lg{color:var(--ink-2);font-size:16px;line-height:1.95;max-width:34rem}
 .mut{color:var(--mut)}
 
@@ -111,26 +111,20 @@ section{position:relative}
 .kw{display:flex;flex-wrap:wrap;gap:8px;margin-top:36px}
 .kw span{font-size:12px;letter-spacing:.06em;color:var(--mut);border:1px solid var(--line-2);border-radius:100px;padding:6px 14px}
 
-/* day / night blocks */
-.dn-block{display:grid;gap:0;border-top:1px solid var(--line-2)}
-.dn-media{position:relative;aspect-ratio:4/3;overflow:hidden;background:#000}
-.dn-media img{width:100%;height:100%;object-fit:cover;transition:transform 1.1s cubic-bezier(.2,.6,.2,1)}
-.dn-media .tag{position:absolute;left:20px;bottom:16px;font-size:10.5px;letter-spacing:.28em;
-  text-transform:uppercase;color:rgba(255,255,255,.82);z-index:2}
-.dn-media::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 55%,rgba(0,0,0,.5))}
-.dn-copy{padding:clamp(46px,7vw,86px) var(--pad)}
-.dn-copy .num{font-family:var(--serif);font-style:italic;font-size:15px;color:var(--mut);margin-bottom:20px}
-.dn-copy h3{font-family:var(--serif);font-weight:500;font-size:clamp(1.8rem,4.6vw,3rem);
-  line-height:1.18;letter-spacing:-.01em;margin-bottom:24px}
-.dn-copy p{color:var(--ink-2);line-height:1.95;font-size:15.5px;max-width:32rem}
-.dn-copy .sub{margin-top:22px;color:var(--mut);font-size:14px;line-height:1.85}
-.dn-thumbs{display:flex;gap:10px;margin-top:34px}
-.dn-thumbs img{width:96px;height:120px;object-fit:cover;filter:grayscale(.15)}
+/* intro band + smooth zoom */
+.intro-body{max-width:52rem}
+.intro-body p{color:var(--ink-2);line-height:1.95;font-size:16px}
+.intro-band{display:grid;grid-template-columns:1fr;gap:10px;margin-top:52px}
+.intro-band img{width:100%;aspect-ratio:4/5;object-fit:cover;filter:grayscale(.1) contrast(1.02)}
+.zoom{display:block;overflow:hidden;background:#000}
+.zoom img,.gal a img,.res-media img{transition:transform 1.5s cubic-bezier(.2,.6,.2,1);will-change:transform}
+.zoom:hover img,.gal a:hover img,.res-media:hover img{transform:scale(1.06)}
+.gal a{overflow:hidden}
 
 /* menu */
 .menu-sec{background:var(--bg2)}
 .menu-grid{display:grid;gap:52px;margin-top:12px}
-.mcol h4{font-family:var(--serif);font-style:italic;font-weight:400;font-size:1.5rem;margin-bottom:26px;
+.mcol h4{font-family:var(--serif);font-style:normal;font-weight:400;font-size:1.5rem;letter-spacing:.03em;margin-bottom:26px;
   padding-bottom:16px;border-bottom:1px solid var(--line)}
 .mrow{margin-bottom:22px}
 .mrow .cat{font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--mut);margin-bottom:7px}
@@ -168,6 +162,8 @@ section{position:relative}
 .btn{display:inline-flex;align-items:center;gap:11px;margin-top:30px;font-size:13px;letter-spacing:.08em;
   text-transform:uppercase;border:1px solid var(--line);padding:14px 24px;border-radius:2px;transition:background .25s,color .25s}
 .btn:hover{background:var(--ink);color:#0d0d0d;border-color:var(--ink)}
+.rbtn{display:inline-flex;align-items:center;gap:10px;margin-top:18px;font-size:13px;letter-spacing:.04em;background:var(--ink);color:#0d0d0d;padding:13px 24px;border-radius:2px;font-weight:500;transition:opacity .25s}
+.rbtn:hover{opacity:.86}
 
 /* footer */
 footer{background:#0a0a0a;border-top:1px solid var(--line-2);padding:70px 0 118px}
@@ -202,10 +198,7 @@ footer{background:#0a0a0a;border-top:1px solid var(--line-2);padding:70px 0 118p
   .quickbar{display:none}
   .hero-tag,.hero-foot{display:block}
   body{padding-bottom:0}
-  .intro .cols{grid-template-columns:1.1fr 1fr;gap:70px}
-  .dn-block{grid-template-columns:1fr 1fr}
-  .dn-block.rev .dn-media{order:2}
-  .dn-media{aspect-ratio:auto}
+  .intro-band{grid-template-columns:1fr 1fr 1fr}
   .menu-grid{grid-template-columns:1fr 1fr;gap:80px}
   .gal{columns:3;column-gap:14px}
   .gal img{margin-bottom:14px}
@@ -219,14 +212,10 @@ footer{background:#0a0a0a;border-top:1px solid var(--line-2);padding:70px 0 118p
   .hero .lead{font-size:16px}
 }
 @media (hover:none){
-  .dn-media img:hover{transform:none}
   .hero-cta:hover{gap:12px}
+  .zoom:hover img,.gal a:hover img,.res-media:hover img{transform:none}
 }
-@media (prefers-reduced-motion:reduce){
-  html{scroll-behavior:auto}
-  .js .reveal{opacity:1;transform:none;transition:none}
-  .dn-media img{transition:none}
-}
+/* 동작 줄이기(prefers-reduced-motion)에도 애니메이션 강제 재생 — 다올 지정, 가드 없음 */
 </style>
 </head>
 <body>
@@ -236,7 +225,6 @@ footer{background:#0a0a0a;border-top:1px solid var(--line-2);padding:70px 0 118p
     <a href="#top" class="brand" aria-label="데이넌 홈">day none</a>
     <nav class="menu" aria-label="주 메뉴">
       <a href="#intro">소개</a>
-      <a href="#daynight">낮과 밤</a>
       <a href="#menu">메뉴</a>
       <a href="#reserve">예약·대관</a>
       <a href="#location">오시는 길</a>
@@ -250,7 +238,6 @@ footer{background:#0a0a0a;border-top:1px solid var(--line-2);padding:70px 0 118p
 <div class="drawer" id="drawer">
   <nav aria-label="모바일 메뉴">
     <a href="#intro">소개</a>
-    <a href="#daynight">낮과 밤</a>
     <a href="#menu">메뉴</a>
     <a href="#reserve">예약 · 대관</a>
     <a href="#location">오시는 길</a>
@@ -276,43 +263,15 @@ footer{background:#0a0a0a;border-top:1px solid var(--line-2);padding:70px 0 118p
   <section class="intro sec-pad" id="intro">
     <div class="wrap">
       <div class="slabel"><span class="ln"></span><span>Intro — 소개</span></div>
-      <p class="big serif">하루의 끝에 나에게 선물하는<br>작은 쉼, 조용한 힐링, <em>가벼운 설렘.</em></p>
-      <div class="cols">
-        <p>데이넌은 단순히 음료나 술을 제공하는 공간이 아닙니다. 불필요한 장식 없이 깔끔한 블랙톤 인테리어, 은은한 조명과 감각적인 음악, 그리고 작은 디테일이 살아 있는 공간감. 방문하시는 모든 분께 일상에서 살짝 벗어난 기분 좋은 전환을 선사합니다.</p>
-        <p>테이블 간격이 넉넉해 방해받지 않고 대화에 집중하실 수 있고, 내부 소음도 적어 자연스럽고 조용한 분위기가 흐릅니다. 포토존이 아닌, 느좋 무드존. 고급지되 과하지 않은 공간을 찾는 분께.
-        <span class="kw"><span>조용한 대화</span><span>넉넉한 간격</span><span>은은한 조명</span><span>소개팅·데이트</span></span></p>
+      <p class="big serif">하루의 끝에 나에게<br>선물하는 <em>작은 쉼.</em></p>
+      <div class="intro-body">
+        <p>석촌호수와 송리단길 사이 조용한 골목의 블랙 무드 카페 &amp; 와인바. 낮에는 커피 한 잔의 여유를, 밤에는 와인과 칵테일로 하루의 끝을 채웁니다. 불필요한 장식 없는 블랙톤 인테리어와 넉넉한 테이블 간격, 은은한 조명 속에서 방해받지 않는 대화를. 포토존이 아닌, 느좋 무드존.</p>
+        <div class="kw"><span>조용한 대화</span><span>넉넉한 간격</span><span>은은한 조명</span><span>낮 카페 · 밤 와인바</span><span>소개팅·데이트</span></div>
       </div>
-    </div>
-  </section>
-
-  <!-- DAY / NIGHT -->
-  <section id="daynight">
-    <div class="dn-block reveal">
-      <div class="dn-media"><img src="dn-coffee.jpg" alt="데이넌의 라떼 — 낮의 커피"><span class="tag">Day</span></div>
-      <div class="dn-copy">
-        <p class="num">01</p>
-        <h3>커피 한 잔으로<br><em>여유를 느끼다</em></h3>
-        <p>햇살이 따뜻하게 들어오는 오후, 데이넌은 조용하고 차분한 감성 카페로 운영됩니다. 진하고 섬세한 에스프레소부터, 보통 카페에서 보기 힘든 블랙슈페너·오렌지슈페너, 논카페인 음료와 프리미엄 티까지.</p>
-        <p class="sub">혼자 조용히 책을 읽고 싶을 때, 오랜만에 깊은 대화를 나누고 싶을 때, 혹은 특별한 데이트 장소를 찾을 때에도.</p>
-        <div class="dn-thumbs">
-          <img src="dn-ice.jpg" alt="아이스 커피" loading="lazy">
-          <img src="dn-cups.jpg" alt="데이넌 테이크아웃 컵" loading="lazy">
-          <img src="dn-tea.jpg" alt="프리미엄 티" loading="lazy">
-        </div>
-      </div>
-    </div>
-    <div class="dn-block rev reveal">
-      <div class="dn-media"><img src="dn-wine.jpg" alt="데이넌의 밤 — 와인과 안주"><span class="tag">Night</span></div>
-      <div class="dn-copy">
-        <p class="num">02</p>
-        <h3>와인과 칵테일로<br><em>채우는 하루의 끝</em></h3>
-        <p>어둠이 내리고 조명이 더욱 은은해지는 저녁, 데이넌은 와인바로서의 매력을 더합니다. 엄선된 내추럴 와인과 부담 없이 즐기는 레드·화이트, 프리미엄 리큐르로 만든 데이넌만의 감성 칵테일까지.</p>
-        <p class="sub">술에 익숙하지 않은 분도 편하게. 도수가 약한 칵테일부터 탄산감 있는 하이볼 스타일까지 — 낮과는 매력적으로 반전되는 분위기를 느껴보세요.</p>
-        <div class="dn-thumbs">
-          <img src="dn-cocktail.jpg" alt="시그니처 칵테일" loading="lazy">
-          <img src="dn-blue.jpg" alt="블루 칵테일" loading="lazy">
-          <img src="dn-plate.jpg" alt="디저트 플레이트" loading="lazy">
-        </div>
+      <div class="intro-band reveal">
+        <a class="zoom" href="dn-coffee.jpg" target="_blank" rel="noopener"><img src="dn-coffee.jpg" alt="데이넌의 커피" loading="lazy"></a>
+        <a class="zoom" href="dn-wine.jpg" target="_blank" rel="noopener"><img src="dn-wine.jpg" alt="데이넌의 와인" loading="lazy"></a>
+        <a class="zoom" href="dn-cups.jpg" target="_blank" rel="noopener"><img src="dn-cups.jpg" alt="데이넌 테이크아웃 컵" loading="lazy"></a>
       </div>
     </div>
   </section>
@@ -374,6 +333,7 @@ footer{background:#0a0a0a;border-top:1px solid var(--line-2);padding:70px 0 118p
               <li>네이버 예약 또는 매장 전화로 접수</li>
               <li>단체 예약은 매장으로 문의해 주세요</li>
             </ul>
+            <a class="rbtn" href="https://naver.me/FjcQuXFn" target="_blank" rel="noopener">네이버 예약하기 <span aria-hidden="true">→</span></a>
           </div>
           <div class="card">
             <h4>전체 대관 (10~15인)</h4>
@@ -383,7 +343,7 @@ footer{background:#0a0a0a;border-top:1px solid var(--line-2);padding:70px 0 118p
               <li>콜키지 <b>20,000원 / 병</b> (업장 와인 주문 후 이용)</li>
               <li>라스트오더 01:00 · 마감 02:00</li>
               <li>원하시는 플레이리스트 · 사운드 세팅 가능</li>
-              <li>테라스 이용 불가 · 주차 문의</li>
+              <li>테라스 이용 불가</li>
             </ul>
           </div>
           <div class="res-note">
@@ -462,7 +422,7 @@ document.documentElement.classList.add('js');
   drawer.querySelectorAll('a').forEach(function(a){ a.addEventListener('click',function(){ setDraw(false); }); });
   // reveal (desktop, motion-safe)
   var mq=window.matchMedia('(min-width:768px)'), rm=window.matchMedia('(prefers-reduced-motion:reduce)');
-  if(mq.matches && !rm.matches && 'IntersectionObserver' in window){
+  if(mq.matches && 'IntersectionObserver' in window){
     var io=new IntersectionObserver(function(es){ es.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } }); },{threshold:.16,rootMargin:'0px 0px -8% 0px'});
     document.querySelectorAll('.reveal').forEach(function(el){ io.observe(el); });
     setTimeout(function(){ document.querySelectorAll('.reveal:not(.in)').forEach(function(el){ el.classList.add('in'); }); },1600);

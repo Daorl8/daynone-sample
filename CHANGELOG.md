@@ -5,6 +5,13 @@
 - 브랜드가 **라이트 지오메트릭 산세리프**임이 확인됨 → 세리프 방향(Fraunces·Noto Serif KR) 폐기. **라틴 디스플레이=Jost**(무료 유사 지오메트릭), **한글=Pretendard**로 통일. `--serif`(변수명 유지)=Jost→Pretendard→sans 폴백.
 - **납품 확정 시 진짜 Columbia로 교체**(라틴 부분만 — 한글은 Pretendard 유지). 라이선스 확보(데이넌/다올 산돌 이용권 + 웹폰트 가능 확인) 필요.
 
+## 2026-07-31 — v0.5 구조·폰트·인터랙션 개편 (다올 피드백)
+- **폰트=Marcellus**(콘트라스트 있는 글리픽 세리프, 다올이 로고 dnyn과 최근접으로 선택. 로고 실제폰트 Columbia Sans Display는 유료). 라틴 디스플레이=Marcellus, 한글=Pretendard. Marcellus는 이탤릭 없어 .en/.mcol h4 이탤릭 제거.
+- **소개 3섹션(소개+낮+밤)→1섹션 통합**: 간결한 소개 한 문단 + 키워드 + 사진 3컷 밴드(커피·와인·컵). 낮/밤 듀얼 블록 제거, 나브 '낮과 밤' 링크 제거.
+- **사진 hover 확대 스무스**(.zoom·gallery·res-media, transform 1.5s ease). **prefers-reduced-motion에도 애니메이션 강제 재생**(reveal/zoom 가드 제거, JS도 rm 게이트 제거. 데스크톱만 reveal은 유지=모바일 웹뷰 안정). [[reduced-motion 강제 관행]]
+- **예약 섹션**: 대관 '주차 문의' 텍스트 삭제(주차 불가 안내는 유지), 예약 안내 카드에 **네이버 예약 버튼(.rbtn, naver.me)** 추가.
+- ⚠️ **메뉴 개편은 보류**(다올이 사진 준 뒤 요청 예정): 낮밤 통합·항목별 사진·토글 접기·인기메뉴 노출. 현재 메뉴는 기존 Day/Night 2열 유지.
+
 ## 2026-07-31 — v0.2 폰트 마감 (라이브 QA 후)
 - 한글 헤드라인이 궁서/바탕(serif 폴백)으로 렌더되던 버그 수정 → **Noto Serif KR**(가중치 300·400·500) 추가, `--serif`=Fraunces→Noto Serif KR→Malgun→(폴백). 라틴=Fraunces, 한글=NSKR로 고정(OS 무관 일관).
 - 한글 `<em>` 강조의 **가짜 이탤릭(합성 슬랜트) 제거**(.hero h1 / .intro .big / .dn-copy h3 / .display em → font-style:normal). 라틴 이탤릭(Fraunces)만 유지.
