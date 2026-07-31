@@ -5,6 +5,9 @@
 - 브랜드가 **라이트 지오메트릭 산세리프**임이 확인됨 → 세리프 방향(Fraunces·Noto Serif KR) 폐기. **라틴 디스플레이=Jost**(무료 유사 지오메트릭), **한글=Pretendard**로 통일. `--serif`(변수명 유지)=Jost→Pretendard→sans 폴백.
 - **납품 확정 시 진짜 Columbia로 교체**(라틴 부분만 — 한글은 Pretendard 유지). 라이선스 확보(데이넌/다올 산돌 이용권 + 웹폰트 가능 확인) 필요.
 
+## 2026-07-31 — v0.12 전화번호 추가 (안심번호)
+- 전화 **0507-1470-2085**(안심번호, 사장님 사용) 반영: JSON-LD telephone(+82-507-1470-2085), 예약 안내 카드·오시는 길 Contact·모바일 퀵바에 `tel:` 클릭통화 링크. 금·토 마감·좌표는 미확인 유지(지도 미사용이라 무영향).
+
 ## 2026-07-31 — v0.11 코드 검토 반영 (og·noscript·죽은이미지·JSON-LD)
 - **og:image 상대→절대**(https://daynone-sample.lgt3232.workers.dev/dn-hero.jpg) + og:url·og:site_name·**canonical 추가**(전부 절대). 카톡/페북 공유 썸네일 복구. ⚠️ 인계 시 도메인 치환 대상(→[[nail-urban-sample-deploy]] 규칙).
 - **스플래시 no-JS 트랩 수정**: `<noscript><style>#splash{display:none}</style></noscript>` — JS-off 시 검은 백지 대신 콘텐츠 노출.
