@@ -5,6 +5,12 @@
 - 브랜드가 **라이트 지오메트릭 산세리프**임이 확인됨 → 세리프 방향(Fraunces·Noto Serif KR) 폐기. **라틴 디스플레이=Jost**(무료 유사 지오메트릭), **한글=Pretendard**로 통일. `--serif`(변수명 유지)=Jost→Pretendard→sans 폴백.
 - **납품 확정 시 진짜 Columbia로 교체**(라틴 부분만 — 한글은 Pretendard 유지). 라이선스 확보(데이넌/다올 산돌 이용권 + 웹폰트 가능 확인) 필요.
 
+## 2026-07-31 — v0.11 코드 검토 반영 (og·noscript·죽은이미지·JSON-LD)
+- **og:image 상대→절대**(https://daynone-sample.lgt3232.workers.dev/dn-hero.jpg) + og:url·og:site_name·**canonical 추가**(전부 절대). 카톡/페북 공유 썸네일 복구. ⚠️ 인계 시 도메인 치환 대상(→[[nail-urban-sample-deploy]] 규칙).
+- **스플래시 no-JS 트랩 수정**: `<noscript><style>#splash{display:none}</style></noscript>` — JS-off 시 검은 백지 대신 콘텐츠 노출.
+- **죽은 이미지 4개**(dn-blue·dn-dog·dn-ice·dn-tea, ~1MB) `.assetsignore`에 추가해 서빙 제외(로컬 삭제는 마운트 잠금으로 불가, 레포 blob은 남으나 미서빙).
+- **JSON-LD 추가**: `["CafeOrCoffeeShop","BarOrPub"]` LocalBusiness + PostalAddress(송파대로46길 12-1) + openingHours **일~목 13:00–23:00만**(⚠️ 금·토 마감·전화·좌표 미확인이라 의도적 제외, 허위 구조화데이터 회피). sameAs=인스타.
+
 ## 2026-07-31 — v0.10 스플래시 모바일 안 보임 수정
 - **원인=애니 종류 아님, 타이밍/로딩 경쟁**: 로고 PNG(233KB) preload 안 됨 + 고정타이밍 CSS keyframes가 로드 즉시 재생 → 모바일서 이미지 뜨기 전에 애니 종료.
 - **수정**: ① 로고 preload(fetchpriority high) ② **이미지 load 후 JS로 애니 시작**(complete/load 이벤트, 1.6s 폴백) → 모바일서도 항상 노출 ③ 애니 확대(zoom)→**페이드+상승(fade-up, scale .94→1 + translateY)**로 변경(transition 기반, 더 안정·세련). 로고 720px로 다운·최적화(221KB).
