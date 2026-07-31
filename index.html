@@ -16,7 +16,8 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Italiana&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
-<link rel="preload" as="image" href="dn-hero.jpg" fetchpriority="high">
+<link rel="preload" as="image" href="dn-logo-mark.png" fetchpriority="high">
+<link rel="preload" as="image" href="dn-hero.jpg">
 <style>
 :root{
   --bg:#0d0d0d; --bg2:#131313; --panel:#171717;
@@ -205,12 +206,12 @@ footer{background:#0a0a0a;border-top:1px solid var(--line-2);padding:70px 0 118p
 .js .reveal{opacity:0;transform:translateY(22px);transition:opacity 1s ease,transform 1s cubic-bezier(.2,.6,.2,1)}
 .js .reveal.in{opacity:1;transform:none}
 
-/* intro splash — 로고 인트로 (다올 지정, reduced-motion서도 재생) */
-.splash{position:fixed;inset:0;z-index:200;background:#0d0d0d;display:flex;align-items:center;justify-content:center;pointer-events:none;animation:splashOut 2.9s ease forwards}
-.splash-mark{width:min(56vw,320px);opacity:0;transform:scale(.9);animation:markIn 2.9s cubic-bezier(.4,0,.2,1) forwards}
-@keyframes markIn{0%{opacity:0;transform:scale(.9)}18%{opacity:1;transform:scale(1)}66%{opacity:1;transform:scale(1)}100%{opacity:0;transform:scale(1.05)}}
-@keyframes splashOut{0%{opacity:1}70%{opacity:1}100%{opacity:0}}
+/* intro splash — 로고 인트로: 이미지 로드 후 JS로 재생(모바일 보장), 페이드+상승 */
+.splash{position:fixed;inset:0;z-index:200;background:#0d0d0d;display:flex;align-items:center;justify-content:center;pointer-events:none;opacity:1;transition:opacity .85s ease}
+.splash.out{opacity:0}
 .splash.done{display:none}
+.splash-mark{width:min(60vw,330px);opacity:0;transform:scale(.94) translateY(8px);transition:opacity 1.05s ease,transform 1.25s cubic-bezier(.2,.7,.2,1)}
+.splash.in .splash-mark{opacity:1;transform:none}
 
 /* ---------- responsive ---------- */
 @media (min-width:768px){
@@ -493,7 +494,14 @@ footer{background:#0a0a0a;border-top:1px solid var(--line-2);padding:70px 0 118p
 
 <script>
 document.documentElement.classList.add('js');
-(function(){ var s=document.getElementById('splash'); if(s){ setTimeout(function(){ s.classList.add('done'); }, 3000); } })();
+(function(){ var sp=document.getElementById('splash'); if(!sp) return; var img=sp.querySelector('.splash-mark'), done=false;
+  function start(){ if(done) return; done=true; requestAnimationFrame(function(){ sp.classList.add('in'); });
+    setTimeout(function(){ sp.classList.add('out'); }, 2100);
+    setTimeout(function(){ sp.classList.add('done'); }, 3050); }
+  if(img && img.complete && img.naturalWidth) start();
+  else if(img){ img.addEventListener('load', start); img.addEventListener('error', start); setTimeout(start, 1600); }
+  else start();
+})();
 (function(){
   var hdr=document.getElementById('hdr'), burger=document.getElementById('burger'), drawer=document.getElementById('drawer');
   // header solidify
