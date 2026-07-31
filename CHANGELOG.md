@@ -1,5 +1,10 @@
 # CHANGELOG — daynone-sample (데이넌 · 송리단길 카페&와인바)
 
+## 2026-07-31 — v0.3 폰트 방향 전환 (세리프→산세리프, 브랜드 정체성 반영)
+- 다올이 가게 실제 폰트 지목: **Columbia Sans Display 03 Lt**(ProductionType, 산돌구름 유통). = **유료 구독(프로덕션타입 라이프 ₩40,000~)·라틴 전용** 상업폰트 → 직접 self-host 불가(라이선스). 웹폰트(@font-face 동적 서빙) 허용 여부는 산돌 확인 필요(데스크톱 구독과 별개일 수 있음).
+- 브랜드가 **라이트 지오메트릭 산세리프**임이 확인됨 → 세리프 방향(Fraunces·Noto Serif KR) 폐기. **라틴 디스플레이=Jost**(무료 유사 지오메트릭), **한글=Pretendard**로 통일. `--serif`(변수명 유지)=Jost→Pretendard→sans 폴백.
+- **납품 확정 시 진짜 Columbia로 교체**(라틴 부분만 — 한글은 Pretendard 유지). 라이선스 확보(데이넌/다올 산돌 이용권 + 웹폰트 가능 확인) 필요.
+
 ## 2026-07-31 — v0.2 폰트 마감 (라이브 QA 후)
 - 한글 헤드라인이 궁서/바탕(serif 폴백)으로 렌더되던 버그 수정 → **Noto Serif KR**(가중치 300·400·500) 추가, `--serif`=Fraunces→Noto Serif KR→Malgun→(폴백). 라틴=Fraunces, 한글=NSKR로 고정(OS 무관 일관).
 - 한글 `<em>` 강조의 **가짜 이탤릭(합성 슬랜트) 제거**(.hero h1 / .intro .big / .dn-copy h3 / .display em → font-style:normal). 라틴 이탤릭(Fraunces)만 유지.
