@@ -14,7 +14,7 @@
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' fill='%230d0d0d'/%3E%3Ctext x='32' y='42' font-family='Georgia,serif' font-size='30' fill='%23f1f1f1' text-anchor='middle' letter-spacing='1'%3Edn%3C/text%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;1,9..144,300;1,9..144,400&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;1,9..144,300;1,9..144,400&family=Noto+Serif+KR:wght@300;400;500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
 <link rel="preload" as="image" href="dn-hero.jpg" fetchpriority="high">
 <style>
@@ -22,7 +22,7 @@
   --bg:#0d0d0d; --bg2:#131313; --panel:#171717;
   --ink:#f1f1ef; --ink-2:#cfcfcc; --mut:#8f8f8b; --faint:#5c5c58;
   --line:rgba(255,255,255,.12); --line-2:rgba(255,255,255,.07);
-  --serif:'Fraunces','Apple SD Gothic Neo',Georgia,serif;
+  --serif:'Fraunces','Noto Serif KR','Apple SD Gothic Neo','Malgun Gothic',serif;
   --sans:'Pretendard','Apple SD Gothic Neo','Malgun Gothic',system-ui,sans-serif;
   --bar:60px;
   --pad:22px; --maxw:1180px;
@@ -81,7 +81,7 @@ header.solid{background:rgba(13,13,13,.9);border-bottom-color:var(--line-2)}
 .hero .eyebrow{margin-bottom:26px}
 .hero h1{font-family:var(--serif);font-weight:300;font-optical-sizing:auto;
   font-size:clamp(2.7rem,10vw,6rem);line-height:1.04;letter-spacing:-.01em;margin:0 0 18px}
-.hero h1 em{font-style:italic;font-weight:300}
+.hero h1 em{font-style:normal;font-weight:300}
 .hero .lead{max-width:30rem;color:var(--ink-2);font-size:15px;line-height:1.8;margin-bottom:34px}
 .hero-cta{display:inline-flex;align-items:center;gap:12px;font-size:13px;letter-spacing:.1em;
   text-transform:uppercase;border-bottom:1px solid var(--line);padding-bottom:8px;transition:gap .3s,border-color .3s}
@@ -98,7 +98,7 @@ section{position:relative}
 .slabel span{font-size:11px;letter-spacing:.3em;text-transform:uppercase;color:var(--mut);font-weight:500}
 .display{font-family:var(--serif);font-weight:300;font-optical-sizing:auto;
   font-size:clamp(1.9rem,5.2vw,3.4rem);line-height:1.16;letter-spacing:-.01em}
-.display em{font-style:italic}
+.display em,.intro .big em,.dn-copy h3 em{font-style:normal}
 .body-lg{color:var(--ink-2);font-size:16px;line-height:1.95;max-width:34rem}
 .mut{color:var(--mut)}
 

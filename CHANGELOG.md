@@ -1,5 +1,9 @@
 # CHANGELOG — daynone-sample (데이넌 · 송리단길 카페&와인바)
 
+## 2026-07-31 — v0.2 폰트 마감 (라이브 QA 후)
+- 한글 헤드라인이 궁서/바탕(serif 폴백)으로 렌더되던 버그 수정 → **Noto Serif KR**(가중치 300·400·500) 추가, `--serif`=Fraunces→Noto Serif KR→Malgun→(폴백). 라틴=Fraunces, 한글=NSKR로 고정(OS 무관 일관).
+- 한글 `<em>` 강조의 **가짜 이탤릭(합성 슬랜트) 제거**(.hero h1 / .intro .big / .dn-copy h3 / .display em → font-style:normal). 라틴 이탤릭(Fraunces)만 유지.
+
 ## 2026-07-31 — v0.1 초기 시안 (리드 #131 @daynone_dynn)
 - 업종=카페&와인바(송리단길). 컨셉=낮 카페 / 밤 와인바 듀얼. 포지셔닝=조용한 소개팅·데이트 무드.
 - 디자인=블랙(#0d0d0d)·그래파이트·오프화이트 순수 중성 팔레트(웜기는 사진이 담당). 여백 크게·사진 다수.
