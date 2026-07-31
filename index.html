@@ -57,7 +57,7 @@ header.solid{background:rgba(13,13,13,.9);border-bottom-color:var(--line-2)}
 .menu a:hover{color:var(--ink)}
 .book{font-size:12.5px;letter-spacing:.08em;text-transform:uppercase;border:1px solid var(--line);
   padding:9px 17px;border-radius:2px;color:var(--ink);transition:background .25s,color .25s,border-color .25s}
-.book:hover{background:var(--ink);color:#0d0d0d;border-color:var(--ink)}
+.book:hover{background:transparent;color:var(--ink);border-color:var(--ink)}
 .burger{display:inline-flex;flex-direction:column;gap:5px;background:none;border:0;padding:8px;cursor:pointer}
 .burger span{width:22px;height:1.5px;background:var(--ink);transition:.3s}
 .burger[aria-expanded="true"] span:nth-child(1){transform:translateY(6.5px) rotate(45deg)}
@@ -130,6 +130,7 @@ section{position:relative}
 .mrow .cat{font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--mut);margin-bottom:7px}
 .mrow .items{color:var(--ink-2);font-size:15px;line-height:1.7}
 .menu-note{margin-top:44px;font-size:13px;color:var(--mut);letter-spacing:.02em}
+.cat-note{margin-top:16px;font-size:12.5px;color:var(--mut);letter-spacing:.04em}
 /* menu photo grid */
 .msub{font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:var(--mut);margin:2px 0 24px;font-weight:500}
 .mgrid{display:grid;grid-template-columns:repeat(2,1fr);gap:22px 14px}
@@ -206,7 +207,7 @@ footer{background:#0a0a0a;border-top:1px solid var(--line-2);padding:70px 0 118p
 
 /* intro splash — 로고 인트로 (다올 지정, reduced-motion서도 재생) */
 .splash{position:fixed;inset:0;z-index:200;background:#0d0d0d;display:flex;align-items:center;justify-content:center;pointer-events:none;animation:splashOut 2.9s ease forwards}
-.splash-mark{width:min(66vw,400px);opacity:0;transform:scale(.9);animation:markIn 2.9s cubic-bezier(.4,0,.2,1) forwards}
+.splash-mark{width:min(56vw,320px);opacity:0;transform:scale(.9);animation:markIn 2.9s cubic-bezier(.4,0,.2,1) forwards}
 @keyframes markIn{0%{opacity:0;transform:scale(.9)}18%{opacity:1;transform:scale(1)}66%{opacity:1;transform:scale(1)}100%{opacity:0;transform:scale(1.05)}}
 @keyframes splashOut{0%{opacity:1}70%{opacity:1}100%{opacity:0}}
 .splash.done{display:none}
@@ -306,16 +307,13 @@ footer{background:#0a0a0a;border-top:1px solid var(--line-2);padding:70px 0 118p
       <div class="slabel"><span class="ln"></span><span>Menu</span></div>
       <p class="display" style="margin-bottom:8px">한 잔의 <em>여유</em></p>
 
-      <p class="msub">Signature · 인기 메뉴</p>
+      <p class="msub">Signature · 추천 메뉴</p>
       <div class="mgrid reveal">
         <figure class="mitem"><a class="zoom" href="mn-black-schpener.jpg" target="_blank" rel="noopener"><img src="mn-black-schpener.jpg" alt="블랙슈페너" loading="lazy"></a><figcaption>블랙슈페너</figcaption></figure>
         <figure class="mitem"><a class="zoom" href="mn-daynone-ade.jpg" target="_blank" rel="noopener"><img src="mn-daynone-ade.jpg" alt="데이넌 에이드" loading="lazy"></a><figcaption>데이넌 에이드</figcaption></figure>
-        <figure class="mitem"><a class="zoom" href="mn-basil-tomato-ade.jpg" target="_blank" rel="noopener"><img src="mn-basil-tomato-ade.jpg" alt="바질 토마토 에이드" loading="lazy"></a><figcaption>바질 토마토 에이드</figcaption></figure>
-        <figure class="mitem"><a class="zoom" href="mn-apple-kale-juice.jpg" target="_blank" rel="noopener"><img src="mn-apple-kale-juice.jpg" alt="사과 케일 주스" loading="lazy"></a><figcaption>사과 케일 주스</figcaption></figure>
-        <figure class="mitem"><a class="zoom" href="mn-greengrape-ade.jpg" target="_blank" rel="noopener"><img src="mn-greengrape-ade.jpg" alt="청포도에이드" loading="lazy"></a><figcaption>청포도에이드</figcaption></figure>
+        <figure class="mitem"><a class="zoom" href="mn-matcha-basque.jpg" target="_blank" rel="noopener"><img src="mn-matcha-basque.jpg" alt="말차 바스크 치즈케익" loading="lazy"></a><figcaption>말차 바스크</figcaption></figure>
         <figure class="mitem"><a class="zoom" href="mn-daynone-croffle.jpg" target="_blank" rel="noopener"><img src="mn-daynone-croffle.jpg" alt="데이넌 크로플" loading="lazy"></a><figcaption>데이넌 크로플</figcaption></figure>
         <figure class="mitem"><a class="zoom" href="mn-daynone-basque.jpg" target="_blank" rel="noopener"><img src="mn-daynone-basque.jpg" alt="데이넌 바스크 치즈케익" loading="lazy"></a><figcaption>데이넌 바스크</figcaption></figure>
-        <figure class="mitem"><a class="zoom" href="mn-moulin-rouge.jpg" target="_blank" rel="noopener"><img src="mn-moulin-rouge.jpg" alt="물랑루즈" loading="lazy"></a><figcaption>물랑루즈</figcaption></figure>
       </div>
 
       <button class="menu-toggle" id="menuToggle" aria-expanded="false" aria-controls="menuFull">
@@ -325,51 +323,51 @@ footer{background:#0a0a0a;border-top:1px solid var(--line-2);padding:70px 0 118p
       <div class="menu-full" id="menuFull" hidden>
         <h3 class="menu-cat">커피 <span>Coffee</span></h3>
         <div class="mgrid">
+          <figure class="mitem"><a class="zoom" href="mn-affogato.jpg" target="_blank" rel="noopener"><img src="mn-affogato.jpg" alt="아포가토" loading="lazy"></a><figcaption>아포가토</figcaption></figure>
+          <figure class="mitem"><a class="zoom" href="mn-orange-schpener.jpg" target="_blank" rel="noopener"><img src="mn-orange-schpener.jpg" alt="오렌지 슈페너" loading="lazy"></a><figcaption>오렌지 슈페너</figcaption></figure>
           <figure class="mitem"><a class="zoom" href="mn-americano.jpg" target="_blank" rel="noopener"><img src="mn-americano.jpg" alt="아메리카노" loading="lazy"></a><figcaption>아메리카노</figcaption></figure>
+          <figure class="mitem"><a class="zoom" href="mn-brown-cinnamon.jpg" target="_blank" rel="noopener"><img src="mn-brown-cinnamon.jpg" alt="브라운시나몬" loading="lazy"></a><figcaption>브라운시나몬</figcaption></figure>
+          <figure class="mitem"><a class="zoom" href="mn-black-schpener.jpg" target="_blank" rel="noopener"><img src="mn-black-schpener.jpg" alt="블랙슈페너" loading="lazy"></a><figcaption>블랙슈페너</figcaption></figure>
+          <figure class="mitem"><a class="zoom" href="mn-hazelnut-latte.jpg" target="_blank" rel="noopener"><img src="mn-hazelnut-latte.jpg" alt="헤이즐넛라떼" loading="lazy"></a><figcaption>헤이즐넛라떼</figcaption></figure>
           <figure class="mitem"><a class="zoom" href="mn-cafe-latte.jpg" target="_blank" rel="noopener"><img src="mn-cafe-latte.jpg" alt="카페라떼" loading="lazy"></a><figcaption>카페라떼</figcaption></figure>
           <figure class="mitem"><a class="zoom" href="mn-vanilla-latte.jpg" target="_blank" rel="noopener"><img src="mn-vanilla-latte.jpg" alt="바닐라라떼" loading="lazy"></a><figcaption>바닐라라떼</figcaption></figure>
-          <figure class="mitem"><a class="zoom" href="mn-hazelnut-latte.jpg" target="_blank" rel="noopener"><img src="mn-hazelnut-latte.jpg" alt="헤이즐넛라떼" loading="lazy"></a><figcaption>헤이즐넛라떼</figcaption></figure>
-          <figure class="mitem"><a class="zoom" href="mn-affogato.jpg" target="_blank" rel="noopener"><img src="mn-affogato.jpg" alt="아포가토" loading="lazy"></a><figcaption>아포가토</figcaption></figure>
-        </div>
-
-        <h3 class="menu-cat">슈페너 <span>Einspenner</span></h3>
-        <div class="mgrid">
-          <figure class="mitem"><a class="zoom" href="mn-black-schpener.jpg" target="_blank" rel="noopener"><img src="mn-black-schpener.jpg" alt="블랙슈페너" loading="lazy"></a><figcaption>블랙슈페너</figcaption></figure>
-          <figure class="mitem"><a class="zoom" href="mn-orange-schpener.jpg" target="_blank" rel="noopener"><img src="mn-orange-schpener.jpg" alt="오렌지 슈페너" loading="lazy"></a><figcaption>오렌지 슈페너</figcaption></figure>
-          <figure class="mitem"><a class="zoom" href="mn-brown-cinnamon.jpg" target="_blank" rel="noopener"><img src="mn-brown-cinnamon.jpg" alt="브라운시나몬" loading="lazy"></a><figcaption>브라운시나몬</figcaption></figure>
         </div>
 
         <h3 class="menu-cat">논커피 <span>Non-Coffee</span></h3>
         <div class="mgrid">
-          <figure class="mitem"><a class="zoom" href="mn-strawberry-latte.jpg" target="_blank" rel="noopener"><img src="mn-strawberry-latte.jpg" alt="딸기라떼" loading="lazy"></a><figcaption>딸기라떼</figcaption></figure>
           <figure class="mitem"><a class="zoom" href="mn-choco-latte.jpg" target="_blank" rel="noopener"><img src="mn-choco-latte.jpg" alt="기라델리 초코라떼" loading="lazy"></a><figcaption>기라델리 초코라떼</figcaption></figure>
-          <figure class="mitem"><a class="zoom" href="mn-matcha-latte.jpg" target="_blank" rel="noopener"><img src="mn-matcha-latte.jpg" alt="말차라떼" loading="lazy"></a><figcaption>말차라떼</figcaption></figure>
-          <figure class="mitem"><a class="zoom" href="mn-sesame-latte.jpg" target="_blank" rel="noopener"><img src="mn-sesame-latte.jpg" alt="흑임자라떼" loading="lazy"></a><figcaption>흑임자라떼</figcaption></figure>
-          <figure class="mitem"><a class="zoom" href="mn-daynone-ade.jpg" target="_blank" rel="noopener"><img src="mn-daynone-ade.jpg" alt="데이넌 에이드" loading="lazy"></a><figcaption>데이넌 에이드</figcaption></figure>
-          <figure class="mitem"><a class="zoom" href="mn-lemon-ade.jpg" target="_blank" rel="noopener"><img src="mn-lemon-ade.jpg" alt="레몬에이드" loading="lazy"></a><figcaption>레몬에이드</figcaption></figure>
-          <figure class="mitem"><a class="zoom" href="mn-grapefruit-ade.jpg" target="_blank" rel="noopener"><img src="mn-grapefruit-ade.jpg" alt="자몽에이드" loading="lazy"></a><figcaption>자몽에이드</figcaption></figure>
-          <figure class="mitem"><a class="zoom" href="mn-greengrape-ade.jpg" target="_blank" rel="noopener"><img src="mn-greengrape-ade.jpg" alt="청포도에이드" loading="lazy"></a><figcaption>청포도에이드</figcaption></figure>
-          <figure class="mitem"><a class="zoom" href="mn-basil-tomato-ade.jpg" target="_blank" rel="noopener"><img src="mn-basil-tomato-ade.jpg" alt="바질 토마토 에이드" loading="lazy"></a><figcaption>바질 토마토 에이드</figcaption></figure>
-          <figure class="mitem"><a class="zoom" href="mn-earlgrey-milktea.jpg" target="_blank" rel="noopener"><img src="mn-earlgrey-milktea.jpg" alt="얼그레이 밀크티" loading="lazy"></a><figcaption>얼그레이 밀크티</figcaption></figure>
           <figure class="mitem"><a class="zoom" href="mn-apple-kale-juice.jpg" target="_blank" rel="noopener"><img src="mn-apple-kale-juice.jpg" alt="사과 케일 주스" loading="lazy"></a><figcaption>사과 케일 주스</figcaption></figure>
-        </div>
-
-        <h3 class="menu-cat">프리미엄 티 <span>Premium Tea</span></h3>
-        <div class="mgrid">
-          <figure class="mitem"><a class="zoom" href="mn-look-black-earlgrey.jpg" target="_blank" rel="noopener"><img src="mn-look-black-earlgrey.jpg" alt="룩 블랙 얼그레이" loading="lazy"></a><figcaption>룩 블랙 얼그레이</figcaption></figure>
+          <figure class="mitem"><a class="zoom" href="mn-basil-tomato-ade.jpg" target="_blank" rel="noopener"><img src="mn-basil-tomato-ade.jpg" alt="바질 토마토 에이드" loading="lazy"></a><figcaption>바질 토마토 에이드</figcaption></figure>
+          <figure class="mitem"><a class="zoom" href="mn-strawberry-latte.jpg" target="_blank" rel="noopener"><img src="mn-strawberry-latte.jpg" alt="딸기라떼" loading="lazy"></a><figcaption>딸기라떼</figcaption></figure>
+          <figure class="mitem"><a class="zoom" href="mn-grapefruit-ade.jpg" target="_blank" rel="noopener"><img src="mn-grapefruit-ade.jpg" alt="자몽에이드" loading="lazy"></a><figcaption>자몽에이드</figcaption></figure>
+          <figure class="mitem"><a class="zoom" href="mn-lemon-ade.jpg" target="_blank" rel="noopener"><img src="mn-lemon-ade.jpg" alt="레몬에이드" loading="lazy"></a><figcaption>레몬에이드</figcaption></figure>
           <figure class="mitem"><a class="zoom" href="mn-peace-of-mind.jpg" target="_blank" rel="noopener"><img src="mn-peace-of-mind.jpg" alt="피스 오브 마인드" loading="lazy"></a><figcaption>피스 오브 마인드</figcaption></figure>
           <figure class="mitem"><a class="zoom" href="mn-moulin-rouge.jpg" target="_blank" rel="noopener"><img src="mn-moulin-rouge.jpg" alt="물랑루즈" loading="lazy"></a><figcaption>물랑루즈</figcaption></figure>
+          <figure class="mitem"><a class="zoom" href="mn-look-black-earlgrey.jpg" target="_blank" rel="noopener"><img src="mn-look-black-earlgrey.jpg" alt="룩 블랙 얼그레이" loading="lazy"></a><figcaption>룩 블랙 얼그레이</figcaption></figure>
           <figure class="mitem"><a class="zoom" href="mn-orange-blue-mint.jpg" target="_blank" rel="noopener"><img src="mn-orange-blue-mint.jpg" alt="오렌지 블루 민트" loading="lazy"></a><figcaption>오렌지 블루 민트</figcaption></figure>
           <figure class="mitem"><a class="zoom" href="mn-goodnight-lemonbalm.jpg" target="_blank" rel="noopener"><img src="mn-goodnight-lemonbalm.jpg" alt="굿나잇 레몬밤" loading="lazy"></a><figcaption>굿나잇 레몬밤</figcaption></figure>
           <figure class="mitem"><a class="zoom" href="mn-smile-rooibos.jpg" target="_blank" rel="noopener"><img src="mn-smile-rooibos.jpg" alt="스마일 루이보스" loading="lazy"></a><figcaption>스마일 루이보스</figcaption></figure>
+          <figure class="mitem"><a class="zoom" href="mn-earlgrey-milktea.jpg" target="_blank" rel="noopener"><img src="mn-earlgrey-milktea.jpg" alt="얼그레이 밀크티" loading="lazy"></a><figcaption>얼그레이 밀크티</figcaption></figure>
+          <figure class="mitem"><a class="zoom" href="mn-greengrape-ade.jpg" target="_blank" rel="noopener"><img src="mn-greengrape-ade.jpg" alt="청포도에이드" loading="lazy"></a><figcaption>청포도에이드</figcaption></figure>
+          <figure class="mitem"><a class="zoom" href="mn-daynone-ade.jpg" target="_blank" rel="noopener"><img src="mn-daynone-ade.jpg" alt="데이넌 에이드" loading="lazy"></a><figcaption>데이넌 에이드</figcaption></figure>
+          <figure class="mitem"><a class="zoom" href="mn-matcha-latte.jpg" target="_blank" rel="noopener"><img src="mn-matcha-latte.jpg" alt="말차라떼" loading="lazy"></a><figcaption>말차라떼</figcaption></figure>
+          <figure class="mitem"><a class="zoom" href="mn-sesame-latte.jpg" target="_blank" rel="noopener"><img src="mn-sesame-latte.jpg" alt="흑임자라떼" loading="lazy"></a><figcaption>흑임자라떼</figcaption></figure>
         </div>
 
-        <h3 class="menu-cat">디저트 <span>Dessert</span></h3>
+        <h3 class="menu-cat">크로플 <span>Croffle</span></h3>
         <div class="mgrid">
           <figure class="mitem"><a class="zoom" href="mn-daynone-croffle.jpg" target="_blank" rel="noopener"><img src="mn-daynone-croffle.jpg" alt="데이넌 크로플" loading="lazy"></a><figcaption>데이넌 크로플</figcaption></figure>
-          <figure class="mitem"><a class="zoom" href="mn-apple-croffle.jpg" target="_blank" rel="noopener"><img src="mn-apple-croffle.jpg" alt="사과 크로플" loading="lazy"></a><figcaption>사과 크로플</figcaption></figure>
           <figure class="mitem"><a class="zoom" href="mn-kaya-croffle.jpg" target="_blank" rel="noopener"><img src="mn-kaya-croffle.jpg" alt="카야 크로플" loading="lazy"></a><figcaption>카야 크로플</figcaption></figure>
+          <figure class="mitem"><a class="zoom" href="mn-apple-croffle.jpg" target="_blank" rel="noopener"><img src="mn-apple-croffle.jpg" alt="사과 크로플" loading="lazy"></a><figcaption>사과 크로플</figcaption></figure>
+        </div>
+
+        <h3 class="menu-cat">스콘 <span>Scone</span></h3>
+        <div class="mgrid">
           <figure class="mitem"><a class="zoom" href="mn-stone-scone.jpg" target="_blank" rel="noopener"><img src="mn-stone-scone.jpg" alt="돌멩이 스콘" loading="lazy"></a><figcaption>돌멩이 스콘</figcaption></figure>
+        </div>
+
+        <h3 class="menu-cat">케이크 <span>Cake</span></h3>
+        <div class="mgrid">
           <figure class="mitem"><a class="zoom" href="mn-basque-cheesecake.jpg" target="_blank" rel="noopener"><img src="mn-basque-cheesecake.jpg" alt="바스크 치즈케익" loading="lazy"></a><figcaption>바스크 치즈케익</figcaption></figure>
           <figure class="mitem"><a class="zoom" href="mn-daynone-basque.jpg" target="_blank" rel="noopener"><img src="mn-daynone-basque.jpg" alt="데이넌 바스크 치즈케익" loading="lazy"></a><figcaption>데이넌 바스크</figcaption></figure>
           <figure class="mitem"><a class="zoom" href="mn-matcha-basque.jpg" target="_blank" rel="noopener"><img src="mn-matcha-basque.jpg" alt="말차 바스크 치즈케익" loading="lazy"></a><figcaption>말차 바스크</figcaption></figure>
@@ -379,6 +377,7 @@ footer{background:#0a0a0a;border-top:1px solid var(--line-2);padding:70px 0 118p
         <div class="mgrid">
           <figure class="mitem"><a class="zoom" href="mn-house-wine.jpg" target="_blank" rel="noopener"><img src="mn-house-wine.jpg" alt="하우스 레드·화이트 와인" loading="lazy"></a><figcaption>하우스 레드 · 화이트 와인</figcaption></figure>
         </div>
+        <p class="cat-note">그 외 와인 · 주류는 별도 문의</p>
       </div>
 
       <p class="menu-note">메뉴 구성은 시즌에 따라 변동될 수 있습니다. 자세한 가격은 매장에서 확인해 주세요.</p>
